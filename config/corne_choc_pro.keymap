@@ -22,14 +22,14 @@
 
             // --------------------------------------------------------------------------------
             // |      |  B  |  L  |  D  |  C  |  V  |  MUTE |  PP   |  J  |  Y   |  O  |  U  |  ,  |  \   |
-            // |  -   |  N  |  R  |  T  |  S  |  G  |  LALT |  RALT |  P  |  H   |  A  |  E  |  I  |  =   |
-            // |  `   |  X  |  Q  |  M  |  W  |  Z  |               |  K  |  F   |  '  |  ;  |  .  |  /   |
+            // |  -   | N/C | R/A | T/G | S/S |  G  |  LALT |  RALT |  P  | H/S  | A/G | E/A | I/C |  =   |
+            // |  `   |  X  |  Q  |  M  | W/H |  Z  |               |  K  | F/M  |  '  |  ;  |  .  |  /   |
             //                    | GUI | TAB | SPC |               | ENT | BSPC  | ESC |
 
             bindings = <
 &none      &kp B  &kp L  &kp D     &kp C      &kp V        &kp C_MUTE  &kp C_PP  &kp J  &kp Y      &kp O    &kp U     &kp COMMA  &kp BSLH
-&kp MINUS  &kp N  &kp R  &kp T     &kp S      &kp G        &kp LALT    &kp RALT  &kp P  &kp H      &kp A    &kp E     &kp I      &kp EQUAL
-&kp GRAVE  &kp X  &kp Q  &kp M     &kp W      &kp Z                              &kp K  &kp F      &kp SQT  &kp SEMI  &kp DOT    &kp FSLH
+&kp MINUS  &mt LCTRL N  &mt LALT R  &mt LGUI T  &mt LSHFT S  &kp G     &kp LALT    &kp RALT  &kp P  &mt RSHFT H  &mt RGUI A  &mt RALT E  &mt RCTRL I  &kp EQUAL
+&kp GRAVE  &kp X       &kp Q       &kp M        &mt LC(LS(LA(LGUI))) W  &kp Z                            &kp K  &mt LC(LS(LALT)) F  &kp SQT  &kp SEMI  &kp DOT  &kp FSLH
                          &kp LGUI  &lt 1 TAB  &lt 2 SPACE                        &lt 3 RET &lt 4 BSPC  &kp ESC
             >;
         };
