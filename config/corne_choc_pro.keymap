@@ -60,7 +60,6 @@
 
         default_layer {
             display-name = "BASE";
-
             bindings = <
 &kp ESC    &kp B         &kp L        &kp D        &kp C                   &kp V        &none  &none  &kp J      &kp Y               &kp O         &kp U        &kp COMMA     &kp BSLH
 &kp MINUS  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S            &kp G        &none  &none  &kp P      &hmr RSHFT H        &hmr RGUI A   &hmr RALT E  &hmr RCTRL I  &kp EQUAL
@@ -71,23 +70,21 @@
 
         number_layer {
             display-name = "NUMBER";
-
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N7  &kp N8  &kp N9  &kp MINUS  &kp SLASH
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTERISK
-&trans  &trans  &trans  &trans  &trans  &trans                 &trans  &kp N1  &kp N2  &kp N3  &kp DOT    &kp PERCENT
-                        &trans  &trans  &trans                 &trans  &kp N0  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                &trans  &kp N1  &kp N2  &kp N3  &kp DOT    &kp PERCENT
+                        &trans  &trans  &trans                &trans  &kp N0  &trans
             >;
         };
 
         symbol_layer {
             display-name = "SYMBOL";
-
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp RIGHT_BRACKET      &kp LEFT_BRACKET      &kp AT            &kp EXCL   &kp DOLLAR
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp RIGHT_PARENTHESIS  &kp LEFT_PARENTHESIS  &kp LA(NUMBER_2)  &kp HASH   &kp LCTRL
-&trans  &trans  &trans  &trans  &trans  &trans                 &kp EQUAL      &kp RIGHT_BRACE        &kp LEFT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
-                        &trans  &trans  &trans                 &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp LEFT_BRACKET      &kp LEFT_BRACKET       &kp AT            &kp EXCL   &kp DOLLAR
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LA(NUMBER_2)  &kp HASH   &kp LCTRL
+&trans  &trans  &trans  &trans  &trans  &trans                &kp EQUAL      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
+                        &trans  &trans  &trans                &trans         &trans                &trans
             >;
         };
 
@@ -96,8 +93,8 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
-                        &trans  &trans  &trans                  &trans          &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans                &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
+                        &trans  &trans  &trans                &trans          &trans          &trans
             >;
         };
 
@@ -106,8 +103,8 @@
             bindings = <
 &bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4  &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
 &sys_reset   &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans        &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
-&bootloader  &none            &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &trans                       &trans  &trans  &trans  &trans  &trans  &bootloader
-                                               &kp LSHFT        &trans           &kp SPACE                    &trans  &trans  &trans
+&bootloader  &none            &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &trans                      &trans  &trans  &trans  &trans  &trans  &bootloader
+                                               &kp LSHFT        &trans           &kp SPACE                   &trans  &trans  &trans
             >;
         };
 
