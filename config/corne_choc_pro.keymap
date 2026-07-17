@@ -108,13 +108,13 @@
             >;
         };
 
-        extra_layer_2 {
-            display-name = "EXTRA 2";
+        nav_layer {
+            display-name = "nav";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
+&trans  &trans  &trans  &trans                    &kp UP_ARROW    &trans                     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LEFT                  &kp DOWN_ARROW  &kp RIGHT                  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &kp LG(LS(LEFT_BRACKET))  &trans          &kp LS(LG(RIGHT_BRACKET))                  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans                    &trans          &trans                                     &trans  &trans  &trans
             >;
         };
 
