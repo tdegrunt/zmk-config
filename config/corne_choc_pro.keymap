@@ -68,10 +68,10 @@
             //                    | GUI | TAB | SPC |               | ENT | BSPC  | ESC |
 
             bindings = <
-&kp ESC    &kp B         &kp L        &kp D        &kp C                   &kp V        &none  &none  &kp J      &kp Y               &kp O        &kp U        &kp COMMA     &kp BSLH
-&kp MINUS  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S            &kp G        &none  &none  &kp P      &hmr RSHFT H        &hmr RGUI A  &hmr RALT E  &hmr RCTRL I  &kp EQUAL
-&kp GRAVE  &kp X         &kp Q        &kp M        &mt LC(LS(LA(LGUI))) W  &kp Z                      &kp K      &mt LC(LS(LALT)) F  &kp SQT      &kp SEMI     &kp DOT       &kp FSLH
-                                      &lt 3 GLOBE  &lt 1 TAB               &lt 2 SPACE                &lt 3 RET  &lt 5 BSPC          &kp ESC
+&kp ESC    &kp B         &kp L        &kp D        &kp C                   &kp V        &none  &none  &kp J      &kp Y               &kp O         &kp U        &kp COMMA     &kp BSLH
+&kp MINUS  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S            &kp G        &none  &none  &kp P      &hmr RSHFT H        &hmr RGUI A   &hmr RALT E  &hmr RCTRL I  &kp EQUAL
+&kp GRAVE  &kp X         &kp Q        &kp M        &mt LC(LS(LA(LGUI))) W  &kp Z                      &kp K      &mt LC(LS(LALT)) F  &kp SQT       &kp SEMI     &kp DOT       &kp FSLH
+                                      &lt 3 GLOBE  &lt 1 TAB               &lt 2 SPACE                &lt 5 RET  &lt 4 BSPC          &lt 6 ESCAPE
             >;
         };
 
