@@ -61,12 +61,6 @@
         default_layer {
             display-name = "BASE";
 
-            // --------------------------------------------------------------------------------
-            // |      |  B  |  L  |  D  |  C  |  V  |  MUTE |  PP   |  J  |  Y   |  O  |  U  |  ,  |  \   |
-            // |  -   | N/C | R/A | T/G | S/S |  G  |  LALT |  RALT |  P  | H/S  | A/G | E/A | I/C |  =   |
-            // |  `   |  X  |  Q  |  M  | W/H |  Z  |               |  K  | F/M  |  '  |  ;  |  .  |  /   |
-            //                    | GUI | TAB | SPC |               | ENT | BSPC  | ESC |
-
             bindings = <
 &kp ESC    &kp B         &kp L        &kp D        &kp C                   &kp V        &none  &none  &kp J      &kp Y               &kp O         &kp U        &kp COMMA     &kp BSLH
 &kp MINUS  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S            &kp G        &none  &none  &kp P      &hmr RSHFT H        &hmr RGUI A   &hmr RALT E  &hmr RCTRL I  &kp EQUAL
@@ -78,15 +72,9 @@
         number_layer {
             display-name = "NUMBER";
 
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5    |  LCTRL | RCTRL |  6  |  7  |  8  |  9  |  0  | BSPC |
-            // | CTRL | BT1 | BT2 | BT3 | BT4 | BT5   |  LALT  | RALT  | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT | BTCR| RGB | RST | BOOT| Unlock|        |       |     |     |     |     |     |      |
-            //                    | GUI |     | SPC   |        | ENT   |     | ALT |
-
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &trans  &trans  &kp N7  &kp N8  &kp N9  &kp MINUS  &kp SLASH
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &trans  &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTERISK
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N7  &kp N8  &kp N9  &kp MINUS  &kp SLASH
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTERISK
 &trans  &trans  &trans  &trans  &trans  &trans                 &trans  &kp N1  &kp N2  &kp N3  &kp DOT    &kp PERCENT
                         &trans  &trans  &trans                 &trans  &kp N0  &trans
             >;
@@ -95,25 +83,19 @@
         symbol_layer {
             display-name = "SYMBOL";
 
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  | LCTRL | RCTRL |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | CTRL | HUD | HUI |     |     |     |  LALT | RALT  |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |               |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |               | ENT |     | ALT |
-
             bindings = <
-&kp DOLLAR      &kp EXCL   &kp AT            &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PRCNT      &none  &none  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL       &kp HASH   &kp LA(NUMBER_2)  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AMPERSAND  &none  &none  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp UNDERSCORE  &kp MINUS  &kp PLUS          &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp EQUAL                    &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                             &trans                &trans                 &trans                       &kp RET    &trans     &kp RALT
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp RIGHT_BRACKET      &kp LEFT_BRACKET      &kp AT            &kp EXCL   &kp DOLLAR
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp RIGHT_PARENTHESIS  &kp LEFT_PARENTHESIS  &kp LA(NUMBER_2)  &kp HASH   &kp LCTRL
+&trans  &trans  &trans  &trans  &trans  &trans                 &kp EQUAL      &kp RIGHT_BRACE        &kp LEFT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
+                        &trans  &trans  &trans                 &trans  &trans  &trans
             >;
         };
 
         mouse_layer {
             display-name = "MOUSE";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
                         &trans  &trans  &trans                  &trans          &trans          &trans
             >;
@@ -122,8 +104,8 @@
         fw_rgb_layer {
             display-name = "FW_RGB";
             bindings = <
-&bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4  &none  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&sys_reset   &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans        &none  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4  &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
+&sys_reset   &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans        &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
 &bootloader  &none            &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &trans                       &trans  &trans  &trans  &trans  &trans  &bootloader
                                                &kp LSHFT        &trans           &kp SPACE                    &trans  &trans  &trans
             >;
