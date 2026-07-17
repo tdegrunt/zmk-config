@@ -81,7 +81,7 @@
         symbol_layer {
             display-name = "SYMBOL";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp LEFT_BRACKET      &kp LEFT_BRACKET       &kp AT            &kp EXCL   &kp DOLLAR
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AT            &kp EXCL   &kp DOLLAR
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LA(NUMBER_2)  &kp HASH   &kp LCTRL
 &trans  &trans  &trans  &trans  &trans  &trans                &kp EQUAL      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
                         &trans  &trans  &trans                &trans         &trans                &trans
