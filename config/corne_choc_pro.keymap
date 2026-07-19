@@ -83,7 +83,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AT            &kp EXCL   &kp DOLLAR
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LA(NUMBER_2)  &kp HASH   &kp LCTRL
-&trans  &trans  &trans  &trans  &trans  &trans                &kp EQUAL      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
+&trans  &trans  &trans  &trans  &trans  &trans                &kp ASTERISK   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PLUS          &kp MINUS  &kp UNDERSCORE
                         &trans  &trans  &trans                &trans         &trans                &trans
             >;
         };
@@ -92,9 +92,9 @@
             display-name = "MOUSE";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &none  &trans  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
-                        &trans  &trans  &trans                &trans          &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none   &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                 &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
+                        &trans  &trans  &trans                 &trans          &trans          &trans
             >;
         };
 
@@ -111,10 +111,10 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &trans  &trans  &kp UP_ARROW              &trans          &trans                     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LEFT  &kp DOWN_ARROW           &kp RIGHT       &trans                     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LG(LS(LEFT_BRACKET))           &trans          &kp LS(LG(RIGHT_BRACKET))  &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans                    &trans          &trans                                     &trans  &trans  &trans
+&trans  &trans  &trans                    &kp UP_ARROW    &trans                     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LEFT                  &kp DOWN_ARROW  &kp RIGHT                  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp LG(LS(LEFT_BRACKET))  &trans          &kp LS(LG(RIGHT_BRACKET))  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                                          &trans          &trans                     &trans                  &trans  &trans  &trans
             >;
         };
 
