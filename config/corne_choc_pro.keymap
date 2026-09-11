@@ -61,10 +61,10 @@
         default_layer {
             display-name = "BASE";
             bindings = <
-&kp ESC    &kp Q         &kp W        &kp F        &kp P                    &kp G        &none  &none  &kp J      &kp L                &kp U         &kp Y        &kp SEMICOLON  &kp BSLH
-&kp MINUS  &hml LCTRL A  &hml LALT R  &hml LGUI S  &hml LSHFT T             &kp D        &none  &none  &kp H      &hmr RSHFT N         &hmr RGUI E   &hmr RALT I  &hmr RCTRL O   &kp SQT
-&kp GRAVE  &kp Z         &kp X        &kp C        &hml LC(LS(LA(LGUI))) V  &kp B                      &kp K      &hmr LC(LS(LALT)) M  &kp COMMA     &kp PERIOD   &kp SLASH      &kp EQUAL
-                                      &lt 3 GLOBE  &lt 1 TAB                &lt 2 SPACE                &lt 5 RET  &lt 4 BSPC           &lt 6 ESCAPE
+&caps_word  &kp Q         &kp W        &kp F         &kp P                    &kp G      &none  &none  &kp J            &kp L                &kp U         &kp Y        &kp SEMICOLON  &kp BSLH
+&kp MINUS   &hml LCTRL A  &hml LALT R  &hml LGUI S   &hml LSHFT T             &kp D      &none  &none  &kp H            &hmr RSHFT N         &hmr RGUI E   &hmr RALT I  &hmr RCTRL O   &kp SQT
+&kp GRAVE   &kp Z         &kp X        &kp C         &hml LC(LS(LA(LGUI))) V  &kp B                    &kp K            &hmr LC(LS(LALT)) M  &kp COMMA     &kp PERIOD   &kp SLASH      &kp EQUAL
+                                       &lt 3 ESCAPE  &lt 1 SPACE              &lt 2 TAB                &lt 5 BACKSPACE  &lt 4 ENTER          &lt 6 ESCAPE
             >;
         };
 
@@ -118,8 +118,8 @@
             >;
         };
 
-        extra_layer_3 {
-            display-name = "EXTRA 3";
+        media_layer {
+            display-name = "MEDIA";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
