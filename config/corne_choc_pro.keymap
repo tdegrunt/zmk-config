@@ -61,10 +61,10 @@
         default_layer {
             display-name = "BASE";
             bindings = <
-&caps_word  &kp Q         &kp W        &kp F         &kp P                    &kp G      &none  &none  &kp J            &kp L                &kp U         &kp Y        &kp SEMICOLON  &kp BSLH
-&kp MINUS   &hml LCTRL A  &hml LALT R  &hml LGUI S   &hml LSHFT T             &kp D      &none  &none  &kp H            &hmr RSHFT N         &hmr RGUI E   &hmr RALT I  &hmr RCTRL O   &kp SQT
-&kp GRAVE   &kp Z         &kp X        &kp C         &hml LC(LS(LA(LGUI))) V  &kp B                    &kp K            &hmr LC(LS(LALT)) M  &kp COMMA     &kp PERIOD   &kp SLASH      &kp EQUAL
-                                       &lt 3 ESCAPE  &lt 1 SPACE              &lt 2 TAB                &lt 5 BACKSPACE  &lt 4 ENTER          &lt 6 ESCAPE
+&caps_word  &kp Q         &kp W        &kp F         &kp P                    &kp G      &none  &none  &kp J        &kp L                &kp U         &kp Y        &kp SEMICOLON  &kp BSLH
+&kp MINUS   &hml LCTRL A  &hml LALT R  &hml LGUI S   &hml LSHFT T             &kp D      &none  &none  &kp H        &hmr RSHFT N         &hmr RGUI E   &hmr RALT I  &hmr RCTRL O   &kp SQT
+&kp GRAVE   &kp Z         &kp X        &kp C         &hml LC(LS(LA(LGUI))) V  &kp B                    &kp K        &hmr LC(LS(LALT)) M  &kp COMMA     &kp PERIOD   &kp SLASH      &kp EQUAL
+                                       &lt 3 ESCAPE  &lt 1 SPACE              &lt 2 TAB                &lt 5 ENTER  &lt 4 BACKSPACE      &lt 6 ESCAPE
             >;
         };
 
@@ -81,10 +81,10 @@
         symbol_layer {
             display-name = "SYMBOL";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PRCNT      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp AT      &kp EXCL   &kp DOLLAR
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp AMPERSAND  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LA(N2)  &kp HASH   &kp LCTRL
-&trans  &trans  &trans  &trans  &trans  &trans                &kp ASTERISK   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp PLUS    &kp MINUS  &kp UNDERSCORE
-                        &trans  &trans  &trans                &trans         &trans                &trans
+&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans  &none  &none  &trans  &kp AMPERSAND    &kp ASTERISK  &kp LA(NUMBER_2)  &trans  &trans
+&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &none  &none  &trans  &kp DOLLAR       &kp PERCENT   &kp CARET         &trans  &trans
+&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans                &trans  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &trans  &trans
+                        &trans                &trans                 &trans                &trans  &trans           &trans
             >;
         };
 
