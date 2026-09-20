@@ -87,6 +87,36 @@
             bindings = <&kp LEFT_PARENTHESIS>;
             key-positions = <22 2>;
         };
+
+        backslash {
+            bindings = <&kp NON_US_BACKSLASH>;
+            key-positions = <19 12>;
+        };
+
+        quote {
+            bindings = <&kp SQT>;
+            key-positions = <19 26>;
+        };
+
+        equals {
+            bindings = <&kp EQUAL>;
+            key-positions = <19 38>;
+        };
+
+        capsword {
+            bindings = <&caps_word>;
+            key-positions = <22 1>;
+        };
+
+        minus {
+            bindings = <&kp MINUS>;
+            key-positions = <22 15>;
+        };
+
+        grave {
+            bindings = <&kp GRAVE>;
+            key-positions = <22 29>;
+        };
     };
 
     keymap {
