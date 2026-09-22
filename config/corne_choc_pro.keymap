@@ -127,8 +127,8 @@
     keymap {
         compatible = "zmk,keymap";
 
-        gallium_layer {
-            display-name = "GALLIUM";
+        base_layer {
+            display-name = "BASE";
             bindings = <
 &caps_word  &kp B         &kp L        &kp D         &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &kp BSLH
 &kp MINUS   &hml LCTRL N  &hml LALT R  &hml LGUI T   &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &kp SQT
@@ -212,7 +212,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans              &mmv MOVE_Y(-1200)  &trans             &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mmv MOVE_X(-1200)  &mmv MOVE_Y(1200)   &mmv MOVE_X(1200)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans              &trans              &trans              &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans              &trans              &trans             &trans  &trans
                         &trans  &trans  &trans                  &trans  &trans              &trans
             >;
         };
