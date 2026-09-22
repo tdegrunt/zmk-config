@@ -90,32 +90,37 @@
 
         backslash {
             bindings = <&kp BACKSLASH>;
-            key-positions = <19 12>;
+            key-positions = <12 11>;
         };
 
         quote {
             bindings = <&kp SQT>;
-            key-positions = <19 26>;
+            key-positions = <26 25>;
         };
 
         equals {
             bindings = <&kp EQUAL>;
-            key-positions = <19 38>;
+            key-positions = <38 37>;
         };
 
         capsword {
             bindings = <&caps_word>;
-            key-positions = <22 1>;
+            key-positions = <1 2>;
         };
 
         minus {
             bindings = <&kp MINUS>;
-            key-positions = <22 15>;
+            key-positions = <15 16>;
         };
 
         grave {
             bindings = <&kp GRAVE>;
-            key-positions = <22 29>;
+            key-positions = <29 30>;
+        };
+
+        layer7 {
+            bindings = <&mo 7>;
+            key-positions = <40 45>;
         };
     };
 
