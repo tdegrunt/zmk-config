@@ -69,7 +69,7 @@
             key-positions = <31 24>;
         };
 
-        / {}
+        // {}
         lbrace {
             bindings = <&kp LEFT_BRACE>;
             key-positions = <36 16>;
