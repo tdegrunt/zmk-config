@@ -9,5 +9,8 @@ manifest:
       remote: zmkfirmware
       revision: v0.3
       import: app/west.yml
+    - name: crosses-v2-zmk-firmware
+      remote: Good-Great-Grand-Wonderful
+      import: config/west.yml
   self:
     path: config

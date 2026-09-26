@@ -19,8 +19,9 @@ include:
 
   - board: crosses_v2_left
     artifact-name: crosses_v2_36_left
-    shield: settings_reset
   - board: crosses_v2_right
     artifact-name: crosses_v2_36_right
-    shield: settings_reset
  
+  - board: crosses_v2_right
+    artifact-name: crosses_v2_settings_reset
+    shield: settings_reset
