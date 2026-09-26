@@ -8,7 +8,7 @@ with open(path) as f:
 
 for item in data.get("include", []):
     print(
-        "\t".join(
+        "\x1f".join(
             [
                 item.get("board", ""),
                 item.get("shield", ""),

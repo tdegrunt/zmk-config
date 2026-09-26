@@ -9,7 +9,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3
+      revision: main
       import: app/west.yml
     - name: crosses-v2-zmk-firmware
       remote: Good-Great-Grand-Wonderful

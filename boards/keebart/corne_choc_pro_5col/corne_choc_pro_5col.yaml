@@ -1,0 +1,15 @@
+identifier: corne_choc_pro_5col
+name: Corne Choc Pro BT 5-Col
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - usb_device
+  - ble
+  - ieee802154
+  - pwm
+  - watchdog

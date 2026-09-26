@@ -1,0 +1,9 @@
+boards:
+  - name: corne_choc_pro_5col_left
+    vendor: keebart
+    socs:
+      - name: nrf52840
+  - name: corne_choc_pro_5col_right
+    vendor: keebart
+    socs:
+      - name: nrf52840

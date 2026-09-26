@@ -44,7 +44,7 @@ build_one() {
 if [ "$#" -ge 1 ]; then
   build_one "$1" "${2:-}" "" ""
 else
-  while IFS=$'\t' read -r board shield artifact snippet cmake_args; do
+  while IFS=$'\x1f' read -r board shield artifact snippet cmake_args; do
     # shellcheck disable=SC2086
     build_one "$board" "$shield" "$artifact" "$snippet" $cmake_args
   done < <(python3 "$REPO_DIR/.devcontainer/parse_build_matrix.py" "$REPO_DIR/build.yaml")

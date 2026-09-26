@@ -1,0 +1,9 @@
+boards:
+  - name: sofle_choc_pro_left
+    vendor: keebart
+    socs:
+      - name: nrf52840
+  - name: sofle_choc_pro_right
+    vendor: keebart
+    socs:
+      - name: nrf52840

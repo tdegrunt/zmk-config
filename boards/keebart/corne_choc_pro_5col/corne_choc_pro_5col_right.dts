@@ -1,0 +1,8 @@
+/* SPDX-License-Identifier: MIT */
+
+#include "../corne_choc_pro/corne_choc_pro_right.dts"
+
+/ {
+    model = "corne_choc_pro_5col_right";
+    compatible = "corne_choc_pro_5col_right";
+};
