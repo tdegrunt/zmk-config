@@ -14,5 +14,6 @@ manifest:
     - name: crosses-v2-zmk-firmware
       remote: Good-Great-Grand-Wonderful
       import: config/west.yml
+      revision: main
   self:
     path: config
