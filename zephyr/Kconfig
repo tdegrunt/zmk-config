@@ -1,0 +1,6 @@
+# The upstream crosses_v2 board doesn't select ZMK_BOARD_COMPAT, which makes
+# the "Check if building a board without explicit ZMK compat" step in ZMK's
+# build-user-config workflow fail (it runs under `sh -e`, so its warning path
+# exits 1 instead of warning).
+config ZMK_BOARD_COMPAT
+	default y if BOARD_CROSSES_V2_LEFT || BOARD_CROSSES_V2_RIGHT
