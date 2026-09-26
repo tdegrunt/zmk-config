@@ -14,6 +14,10 @@
     chosen { zmk,physical-layout = &default_layout; };
 };
 
+&lt {
+    quick-tap-ms = <200>;
+};
+
 / {
     behaviors {
         hml: home_row_mod_left {
