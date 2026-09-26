@@ -60,32 +60,32 @@
 
         rbracket {
             bindings = <&kp RIGHT_BRACKET>;
-            key-positions = <32 35>;
+            key-positions = <31 24>;
         };
 
         rbrace {
             bindings = <&kp RIGHT_BRACE>;
-            key-positions = <32 36>;
+            key-positions = <31 25>;
         };
 
         rparens {
             bindings = <&kp RIGHT_PARENTHESIS>;
-            key-positions = <32 37>;
+            key-positions = <31 23>;
         };
 
         lbracket {
             bindings = <&kp LEFT_BRACKET>;
-            key-positions = <35 32>;
+            key-positions = <17 36>;
         };
 
         lbrace {
             bindings = <&kp LEFT_BRACE>;
-            key-positions = <35 31>;
+            key-positions = <36 16>;
         };
 
         lparens {
             bindings = <&kp LEFT_PARENTHESIS>;
-            key-positions = <35 30>;
+            key-positions = <18 36>;
         };
 
         backslash {
