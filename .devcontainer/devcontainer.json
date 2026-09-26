@@ -1,13 +1,15 @@
 {
   "name": "ZMK firmware",
-  "image": "docker.io/zmkfirmware/zmk-dev-arm:stable",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "mounts": [
     "source=${localWorkspaceFolderBasename}-zmk-workspace,target=/opt/zmk-workspace,type=volume"
   ],
   "remoteEnv": {
     "ZMK_WORKSPACE": "/opt/zmk-workspace"
   },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postCreateCommand": "rake setup",
   "customizations": {
     "vscode": {
       "extensions": ["ms-vscode.cpptools", "spadin.zmk-tools"]
