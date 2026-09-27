@@ -136,10 +136,10 @@
         base_layer {
             display-name = "BASE";
             bindings = <
-&caps_word  &kp B         &kp L        &kp D         &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &kp BSLH
-&kp MINUS   &hml LCTRL N  &hml LALT R  &hml LGUI T   &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &kp SQT
-&kp GRAVE   &kp X         &kp Q        &kp M         &hml LC(LS(LA(LGUI))) W  &kp Z                    &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &kp EQUAL
-                                       &lt 1 ESCAPE  &lt 2 SPACE              &lt 3 TAB                &lt 6 ENTER  &lt 5 BACKSPACE      &lt 4 ESCAPE
+&trans  &kp B         &kp L        &kp D         &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &trans
+&trans  &hml LCTRL N  &hml LALT R  &hml LGUI T   &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &trans
+&trans  &kp X         &kp Q        &kp M         &hml LC(LS(LA(LGUI))) W  &kp Z                    &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &trans
+                                   &lt 1 ESCAPE  &lt 2 SPACE              &lt 3 TAB                &lt 6 ENTER  &lt 5 BACKSPACE      &lt 4 ESCAPE
             >;
         };
 
@@ -156,10 +156,10 @@
         number_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N7  &kp N8  &kp N9  &kp MINUS  &kp SLASH
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp N4  &kp N5  &kp N6  &kp PLUS   &kp ASTERISK
-&trans  &trans  &trans  &trans  &trans  &trans                &trans  &kp N1  &kp N2  &kp N3  &kp DOT    &kp PERCENT
-                        &trans  &trans  &trans                &trans  &kp N0  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp MINUS  &kp N7  &kp N8  &kp N9  &kp SLASH     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PLUS   &kp N4  &kp N5  &kp N6  &kp ASTERISK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                &kp DOT    &kp N1  &kp N2  &kp N3  &kp PERCENT   &trans
+                        &trans  &trans  &trans                &trans     &kp N0  &trans
             >;
         };
 
@@ -176,10 +176,10 @@
         fw_rgb_layer {
             display-name = "FW_RGB";
             bindings = <
-&bt BT_CLR   &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4  &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
-&sys_reset   &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &trans        &none  &none  &trans  &trans  &trans  &trans  &trans  &trans
-&bootloader  &none            &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &trans                      &trans  &trans  &trans  &trans  &trans  &bootloader
-                                               &kp LSHFT        &trans           &kp SPACE                   &trans  &trans  &trans
+&trans  &bt BT_SEL 4     &bt BT_SEL 3     &bt BT_SEL 2     &bt BT_SEL 1     &bt BT_SEL 0  &none  &none  &trans  &trans  &trans  &trans  &trans       &trans
+&trans  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &bt BT_CLR    &none  &none  &trans  &trans  &trans  &trans  &trans       &trans
+&trans  &bootloader      &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &sys_reset                  &trans  &trans  &trans  &trans  &bootloader  &trans
+                                          &kp LSHFT        &trans           &kp SPACE                   &trans  &trans  &trans
             >;
         };
 
