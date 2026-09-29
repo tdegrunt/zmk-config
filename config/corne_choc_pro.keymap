@@ -166,10 +166,10 @@
         symbol_layer {
             display-name = "SYMBOL";
             bindings = <
-&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans  &none  &none  &trans  &kp AMPERSAND    &kp ASTERISK  &kp LA(NUMBER_2)  &trans  &trans
-&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &none  &none  &trans  &kp DOLLAR       &kp PERCENT   &kp CARET         &trans  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans                &trans  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &trans  &trans
-                        &trans                &trans                 &trans                &trans  &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp AMPERSAND    &kp ASTERISK  &kp LA(NUMBER_2)  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp DOLLAR       &kp PERCENT   &kp CARET         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                &trans  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &trans  &trans
+                        &trans  &trans  &trans                &trans  &trans           &trans
             >;
         };
 
