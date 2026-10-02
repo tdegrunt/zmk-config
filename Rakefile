@@ -4,6 +4,7 @@
 #   rake update       pull in changes to config/west.yml
 #   rake build        build every entry in build.yaml into build/
 #   rake "build[board,shield]"  build a single board (shield optional)
+#   rake clean        remove the cached build directories (forces a full rebuild)
 #   rake flash        flash a keyboard's halves with its firmware from build/
 #   rake flash:reset  flash a keyboard's halves with settings_reset firmware
 #
@@ -20,13 +21,15 @@
 
 require "fileutils"
 require "shellwords"
-require "tmpdir"
 require "yaml"
 
 REPO_DIR = File.expand_path(__dir__)
 WORKSPACE = ENV.fetch("ZMK_WORKSPACE", "/opt/zmk-workspace")
 BUILD_YAML = File.join(REPO_DIR, "build.yaml")
 FIRMWARE_DIR = File.expand_path(ENV.fetch("FIRMWARE_DIR", File.join(REPO_DIR, "build")))
+# Build directories persist between runs so west only recompiles what changed.
+# They live on the workspace volume, which is much faster than the bind mount.
+BUILD_CACHE = File.join(WORKSPACE, "build")
 
 # One entry per build.yaml include. The name mirrors the GitHub workflow:
 # artifact-name, or "<shield>-<board>" when no artifact-name is given.
@@ -67,7 +70,9 @@ end
 def sync_config
   FileUtils.mkdir_p(WORKSPACE)
   FileUtils.rm_rf(File.join(WORKSPACE, "config"))
-  FileUtils.cp_r(File.join(REPO_DIR, "config"), File.join(WORKSPACE, "config"))
+  # Keep the original timestamps, or CMake sees every config file as changed
+  # and reconfigures on each build.
+  FileUtils.cp_r(File.join(REPO_DIR, "config"), File.join(WORKSPACE, "config"), preserve: true)
 end
 
 # west zephyr-export writes to $HOME/.cmake/packages, which lives on the
@@ -79,6 +84,10 @@ end
 
 def workspace_initialized?
   File.directory?(File.join(WORKSPACE, "zmk"))
+end
+
+def zephyr_exported?
+  File.directory?(File.join(Dir.home, ".cmake", "packages", "Zephyr"))
 end
 
 desc "Initialize the ZMK west workspace"
@@ -113,23 +122,45 @@ def build_one(build)
   cmake_args.concat(Shellwords.split(build.cmake_args))
   west_args = build.snippet.empty? ? [] : ["-S", build.snippet]
 
-  Dir.mktmpdir do |build_dir|
-    Dir.chdir(WORKSPACE) do
-      sh "west", "build", "-s", "zmk/app", "-d", build_dir, "-b", build.board, *west_args, "--", *cmake_args
-    end
-
-    uf2 = File.join(build_dir, "zephyr", "zmk.uf2")
-    if File.file?(uf2)
-      FileUtils.cp(uf2, File.join(FIRMWARE_DIR, "#{build.name}.uf2"))
-      puts "==> Firmware ready: build/#{build.name}.uf2"
+  build_dir = File.join(BUILD_CACHE, build.name)
+  # Passing CMake arguments makes west re-run CMake every time, so only pass
+  # them when they changed. Edits to the keymap or .conf still reconfigure,
+  # since CMake tracks those files itself.
+  stamp = File.join(build_dir, ".rake-cmake-args")
+  configured = File.file?(File.join(build_dir, "CMakeCache.txt")) &&
+               File.file?(stamp) && File.read(stamp) == cmake_args.join("\n")
+  Dir.chdir(WORKSPACE) do
+    if configured
+      sh "west", "build", "-d", build_dir
     else
-      warn "==> No .uf2 produced for #{build.name} -- check the build log above"
+      sh "west", "build", "-s", "zmk/app", "-d", build_dir, "-b", build.board, *west_args, "--", *cmake_args
+      File.write(stamp, cmake_args.join("\n"))
     end
+  end
+
+  uf2 = File.join(build_dir, "zephyr", "zmk.uf2")
+  if File.file?(uf2)
+    FileUtils.cp(uf2, File.join(FIRMWARE_DIR, "#{build.name}.uf2"))
+    puts "==> Firmware ready: build/#{build.name}.uf2"
+  else
+    warn "==> No .uf2 produced for #{build.name} -- check the build log above"
   end
 end
 
+# What a build needs, without setup's full re-export on every run.
+task :prepare do
+  next Rake::Task[:setup].invoke unless workspace_initialized?
+  sync_config
+  zephyr_export unless zephyr_exported?
+end
+
+desc "Remove the cached build directories"
+task :clean do
+  FileUtils.rm_rf(BUILD_CACHE)
+end
+
 desc "Build firmware for every build.yaml entry, or for one board (and shield)"
-task :build, [:board, :shield] => :setup do |_, args|
+task :build, [:board, :shield] => :prepare do |_, args|
   FileUtils.mkdir_p(FIRMWARE_DIR)
   targets = if args[:board]
               [Build.new(args[:board], args[:shield].to_s, "", "", "")]
