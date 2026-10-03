@@ -139,8 +139,8 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base_layer {
-            display-name = "BASE";
+        main_layer {
+            display-name = "MAIN";
             bindings = <
               &kp B         &kp L        &kp D        &kp C                    &kp V    &kp J  &kp Y                &kp O        &kp U        &kp SEMICOLON
               &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S             &kp G    &kp P  &hmr RSHFT H         &hmr RGUI A  &hmr RALT E  &hmr RCTRL I
@@ -149,8 +149,8 @@
             >;
         };
 
-        colemak_layer {
-            display-name = "COLEMAK";
+        alt_layer {
+            display-name = "ALT";
             bindings = <
               &kp Q         &kp W        &kp F        &kp P                    &kp G    &kp J  &kp L                &kp U        &kp Y        &kp SEMICOLON
               &hml LCTRL A  &hml LALT R  &hml LGUI S  &hml LSHFT T             &kp D    &kp H  &hmr RSHFT N         &hmr RGUI E  &hmr RALT I  &hmr RCTRL O
@@ -163,8 +163,8 @@
             display-name = "MOUSE";
             bindings = <
               &trans  &mkp RCLK        &mmv MOVE_UP    &mkp LCLK       &trans            &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans
-              &trans  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &mmv MOVE_LEFT  &msc SCRL_UP      &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
-              &trans  &msc SCRL_RIGHT  &mkp MCLK       &msc SCRL_LEFT  &msc SCRL_DOWN    &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
+              &trans  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &mmv MOVE_LEFT  &msc SCRL_DOWN    &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans
+              &trans  &msc SCRL_RIGHT  &mkp MCLK       &msc SCRL_LEFT  &msc SCRL_UP      &msc SCRL_UP    &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans
                                        &trans          &trans          &mo 8             &mo 8           &trans          &trans
             >;
         };
