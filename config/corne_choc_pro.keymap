@@ -164,8 +164,8 @@
             display-name = "MOUSE";
             bindings = <
 &trans  &trans  &mkp RCLK        &mmv MOVE_UP    &mkp LCLK       &trans          &none  &trans  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
-&trans  &trans  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &mmv MOVE_LEFT  &msc SCRL_UP    &none  &none   &msc SCRL_UP    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &msc SCRL_RIGHT  &mkp MCLK       &msc SCRL_LEFT  &msc SCRL_DOWN                 &msc SCRL_DOWN  &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
+&trans  &trans  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &mmv MOVE_LEFT  &msc SCRL_DOWN  &none  &none   &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &msc SCRL_RIGHT  &mkp MCLK       &msc SCRL_LEFT  &msc SCRL_UP                   &msc SCRL_UP    &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
                                  &trans          &trans          &mo 8                          &mo 8           &trans          &trans
             >;
         };
