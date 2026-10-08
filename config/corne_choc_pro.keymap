@@ -223,9 +223,9 @@
         mouse_fast_layer {
             display-name = "MOUSE FAST";
             bindings = <
-&trans  &trans  &trans             &mmv MOVE_Y(-1200)  &trans              &trans  &trans  &trans  &trans  &trans              &mmv MOVE_Y(-1200)  &trans             &trans  &trans
-&trans  &trans  &mmv MOVE_X(1200)  &mmv MOVE_Y(1200)   &mmv MOVE_X(-1200)  &trans  &trans  &trans  &trans  &mmv MOVE_X(-1200)  &mmv MOVE_Y(1200)   &mmv MOVE_X(1200)  &trans  &trans
-&trans  &trans  &trans             &trans              &trans              &trans                  &trans  &trans              &trans              &trans             &trans  &trans
+&trans  &trans  &trans             &trans  &trans              &trans  &trans  &trans  &trans  &trans              &mmv MOVE_Y(-1200)  &trans             &trans  &trans
+&trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mmv MOVE_X(-1200)  &mmv MOVE_Y(1200)   &mmv MOVE_X(1200)  &trans  &trans
+&trans  &trans  &trans             &trans   &trans              &trans                  &trans  &trans              &trans              &trans             &trans  &trans
                                    &trans              &trans              &trans                  &trans  &trans              &trans
             >;
         };
