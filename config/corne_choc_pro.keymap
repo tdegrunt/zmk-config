@@ -143,10 +143,10 @@
         main_layer {
             display-name = "MAIN";
             bindings = <
-&trans  &kp B         &kp L        &kp D         &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &trans
-&trans  &hml LCTRL N  &hml LALT R  &hml LGUI T   &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &trans
-&trans  &kp X         &kp Q        &kp M         &hml LC(LS(LA(LGUI))) W  &kp Z                    &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &trans
-                                   &lt 2 ESCAPE  &lt 3 SPACE              &lt 4 TAB                &lt 7 ENTER  &lt 6 BACKSPACE      &lt 5 ESCAPE
+&trans  &kp B         &kp L        &kp D        &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &trans
+&trans  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &trans
+&trans  &kp X         &kp Q        &kp M        &hml LC(LS(LA(LGUI))) W  &kp Z                    &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &trans
+                                   &to 2        &lt 3 SPACE              &lt 4 TAB                &lt 7 ENTER  &lt 6 BACKSPACE      &lt 5 ESCAPE
             >;
         };
 
@@ -163,10 +163,10 @@
         mouse_layer {
             display-name = "MOUSE";
             bindings = <
-&trans  &trans  &mkp RCLK        &mmv MOVE_UP    &mkp LCLK       &trans          &none  &trans  &trans          &mkp LCLK       &mmv MOVE_UP    &mkp RCLK        &trans  &trans
-&trans  &trans  &mmv MOVE_RIGHT  &mmv MOVE_DOWN  &mmv MOVE_LEFT  &msc SCRL_DOWN  &none  &none   &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &msc SCRL_RIGHT  &mkp MCLK       &msc SCRL_LEFT  &msc SCRL_UP                   &msc SCRL_UP    &msc SCRL_LEFT  &mkp MCLK       &msc SCRL_RIGHT  &trans  &trans
-                                 &trans          &trans          &mo 8                          &mo 8           &trans          &trans
+&trans  &trans  &trans           &msc SCRL_DOWN  &trans          &trans  &none  &trans  &trans     &trans          &mmv MOVE_UP    &trans           &trans  &trans
+&trans  &trans  &msc SCRL_RIGHT  &trans          &msc SCRL_LEFT  &trans  &none  &none   &trans     &mmv MOVE_LEFT  &trans          &mmv MOVE_RIGHT  &trans  &trans
+&trans  &trans  &trans           &msc SCRL_UP    &trans          &trans                 &trans     &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
+                                 &to 0           &trans          &mo 8                  &mkp LCLK  &mkp RCLK       &trans
             >;
         };
 
