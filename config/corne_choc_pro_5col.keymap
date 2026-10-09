@@ -9,14 +9,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
-#define BASE 0
-#define NAV 1
-#define MEDIA 2
-#define NUM 3
-#define SYM 4
-#define FUN 5
-#define ADJUST 6
-
 &mt {
     flavor = "tap-preferred";
     tapping-term-ms = <200>;
@@ -41,7 +33,7 @@
                 &kp Q       &kp W       &kp E        &kp R        &kp T &kp C_MUTE &kp C_PP &kp Y &kp U        &kp I        &kp O       &kp P
                 &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F  &kp G &kp LALT   &kp RALT &kp H &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt RGUI SQT
                 &kp Z       &kp X       &kp C        &kp V        &kp B                     &kp N &kp M        &kp COMMA    &kp DOT     &kp FSLH
-                                              &lt MEDIA ESC &lt NAV SPACE &lt FUN TAB      &lt SYM RET &lt NUM BSPC &lt ADJUST DEL
+                                              &lt 2 ESC &lt 1 SPACE &lt 5 TAB      &lt 4 RET &lt 3 BSPC &lt 6 DEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
