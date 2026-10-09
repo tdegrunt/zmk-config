@@ -26,7 +26,7 @@
             bindings = <&kp>, <&kp>;
 
             hold-trigger-key-positions = <
-                8 9 10 11 12 13
+                 8  9 10 11 12 13
                 22 23 24 25 26 27
                 34 35 36 37 38 39
                 43 44 45
@@ -45,10 +45,10 @@
             bindings = <&kp>, <&kp>;
 
             hold-trigger-key-positions = <
-                0 1 2 3 4 5
+                 0  1  2  3  4  5
                 14 15 16 17 18 19
                 28 29 30 31 32 33
-                40 41 42
+                       40 41 42
             >;
 
             hold-trigger-on-release;
@@ -58,7 +58,7 @@
     combos {
         compatible = "zmk,combos";
 
-        // []
+        // Brackets: [ ]
 
         lbracket {
             bindings = <&kp LEFT_BRACKET>;
@@ -70,7 +70,7 @@
             key-positions = <10 9>;
         };
 
-        // {}
+        // Braces: { }
 
         lbrace {
             bindings = <&kp LEFT_BRACE>;
@@ -82,7 +82,7 @@
             key-positions = <8 9>;
         };
 
-        // {}
+        // Parentheses: ( )
 
         lparens {
             bindings = <&kp LEFT_PARENTHESIS>;
@@ -93,6 +93,8 @@
             bindings = <&kp RIGHT_PARENTHESIS>;
             key-positions = <10 11>;
         };
+
+        // Other symbols
 
         backslash {
             bindings = <&kp BACKSLASH>;
@@ -109,11 +111,6 @@
             key-positions = <38 37>;
         };
 
-        capsword {
-            bindings = <&caps_word>;
-            key-positions = <1 2>;
-        };
-
         minus {
             bindings = <&kp MINUS>;
             key-positions = <15 16>;
@@ -123,6 +120,15 @@
             bindings = <&kp GRAVE>;
             key-positions = <29 30>;
         };
+
+        // Caps word
+
+        capsword {
+            bindings = <&caps_word>;
+            key-positions = <1 2>;
+        };
+
+        // Layer switching: MAIN <-> ALT
 
         to_colemak {
             bindings = <&to 1>;
@@ -140,103 +146,113 @@
     keymap {
         compatible = "zmk,keymap";
 
+        // Layer 0
         main_layer {
             display-name = "MAIN";
             bindings = <
-&trans  &kp B         &kp L        &kp D        &kp C                    &kp V      &none  &none  &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &trans
-&trans  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S             &kp G      &none  &none  &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &trans
-&trans  &kp X         &kp Q        &kp M        &hml LC(LS(LA(LGUI))) W  &kp Z                    &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &trans
-                                   &to 2        &lt 3 SPACE              &lt 4 TAB                &lt 7 ENTER  &lt 6 BACKSPACE      &lt 5 ESCAPE
+                &trans  &kp B         &kp L        &kp D        &kp C                    &kp V        &none  &none    &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON  &trans
+                &trans  &hml LCTRL N  &hml LALT R  &hml LGUI T  &hml LSHFT S             &kp G        &none  &none    &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I   &trans
+                &trans  &kp X         &kp Q        &kp M        &hml LC(LS(LA(LGUI))) W  &kp Z                        &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH      &trans
+                                                   &to 2        &lt 3 SPACE              &lt 4 TAB                    &lt 7 ENTER  &lt 6 BACKSPACE      &lt 5 ESCAPE
             >;
         };
 
+        // Layer 1
         alt_layer {
             display-name = "ALT";
             bindings = <
-&trans  &kp Q         &kp W        &kp F        &kp P                    &kp G   &none  &none  &kp J   &kp L                &kp U        &kp Y        &kp SEMICOLON  &trans
-&trans  &hml LCTRL A  &hml LALT R  &hml LGUI S  &hml LSHFT T             &kp D   &none  &none  &kp H   &hmr RSHFT N         &hmr RGUI E  &hmr RALT I  &hmr RCTRL O   &trans
-&trans  &kp Z         &kp X        &kp C        &hml LC(LS(LA(LGUI))) V  &kp B                 &kp K   &hmr LC(LS(LALT)) M  &kp COMMA    &kp PERIOD   &kp SLASH      &trans
-                                   &trans       &trans                   &trans                &trans  &trans               &trans
+                &trans  &kp Q         &kp W        &kp F        &kp P                    &kp G     &none  &none    &kp J   &kp L                &kp U        &kp Y        &kp SEMICOLON  &trans
+                &trans  &hml LCTRL A  &hml LALT R  &hml LGUI S  &hml LSHFT T             &kp D     &none  &none    &kp H   &hmr RSHFT N         &hmr RGUI E  &hmr RALT I  &hmr RCTRL O   &trans
+                &trans  &kp Z         &kp X        &kp C        &hml LC(LS(LA(LGUI))) V  &kp B                     &kp K   &hmr LC(LS(LALT)) M  &kp COMMA    &kp PERIOD   &kp SLASH      &trans
+                                                   &trans       &trans                   &trans                    &trans  &trans               &trans
             >;
         };
 
+        // Layer 2
         mouse_layer {
             display-name = "MOUSE";
             bindings = <
-&trans  &trans  &trans           &msc SCRL_DOWN  &trans          &trans  &none  &trans  &trans     &trans          &mmv MOVE_UP    &trans           &trans  &trans
-&trans  &trans  &msc SCRL_RIGHT  &trans          &msc SCRL_LEFT  &trans  &none  &none   &trans     &mmv MOVE_LEFT  &trans          &mmv MOVE_RIGHT  &trans  &trans
-&trans  &trans  &trans           &msc SCRL_UP    &trans          &trans                 &trans     &trans          &mmv MOVE_DOWN  &trans           &trans  &trans
-                                 &to 0           &trans          &mo 8                  &mkp LCLK  &mkp RCLK       &trans
+                &trans  &trans  &trans           &msc SCRL_DOWN  &trans          &trans    &none  &trans    &trans     &mmv MOVE(-848, -848)  &mmv MOVE(0, -1200)  &mmv MOVE(848, -848)  &trans  &trans
+                &trans  &trans  &msc SCRL_RIGHT  &trans          &msc SCRL_LEFT  &trans    &none  &none     &trans     &mmv MOVE(-1200, 0)    &trans               &mmv MOVE(1200, 0)    &trans  &trans
+                &trans  &trans  &trans           &msc SCRL_UP    &trans          &trans                     &trans     &mmv MOVE(-848, 848)   &mmv MOVE(0, 1200)   &mmv MOVE(848, 848)   &trans  &trans
+                                                 &to 0           &trans          &mo 8                      &mkp LCLK  &mkp RCLK              &trans
             >;
         };
 
+        // Layer 3
         number_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp PERCENT  &kp N7  &kp N8      &kp N9  &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &kp SLASH    &kp N4  &kp N5      &kp N6  &kp PLUS   &trans
-&trans  &trans  &trans  &trans  &trans  &trans                &kp ASTRK    &kp N1  &kp N2      &kp N3  &kp MINUS  &trans
-                        &trans  &trans  &trans                &kp EQUAL    &kp N0  &kp PERIOD
+                &trans  &trans  &trans  &trans  &trans  &trans    &none  &none    &kp PERCENT  &kp N7  &kp N8      &kp N9  &trans     &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &none  &none    &kp SLASH    &kp N4  &kp N5      &kp N6  &kp PLUS   &trans
+                &trans  &trans  &trans  &trans  &trans  &trans                    &kp ASTRK    &kp N1  &kp N2      &kp N3  &kp MINUS  &trans
+                                        &trans  &trans  &trans                    &kp EQUAL    &kp N0  &kp PERIOD
             >;
         };
 
+        // Layer 4
         symbol_layer {
             display-name = "SYMBOL";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp AMPERSAND    &kp ASTERISK  &kp LA(NUMBER_2)  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &none  &none  &trans  &kp DOLLAR       &kp PERCENT   &kp CARET         &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                &trans  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &trans  &trans
-                        &trans  &trans  &trans                &trans  &trans           &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &none  &none    &trans  &kp AMPERSAND    &kp ASTERISK  &kp LA(NUMBER_2)  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &none  &none    &trans  &kp DOLLAR       &kp PERCENT   &kp CARET         &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &trans  &trans
+                                        &trans  &trans  &trans                    &trans  &trans           &trans
             >;
         };
 
+        // Layer 5
         fw_rgb_layer {
             display-name = "FW_RGB";
             bindings = <
-&trans  &bt BT_SEL 4     &bt BT_SEL 3     &bt BT_SEL 2     &bt BT_SEL 1     &bt BT_SEL 0  &none  &none  &trans  &trans  &trans  &trans  &trans       &trans
-&trans  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &bt BT_CLR    &none  &none  &trans  &trans  &trans  &trans  &trans       &trans
-&trans  &bootloader      &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &sys_reset                  &trans  &trans  &trans  &trans  &bootloader  &trans
-                                          &kp LSHFT        &trans           &kp SPACE                   &trans  &trans  &trans
+                &trans  &bt BT_SEL 4     &bt BT_SEL 3     &bt BT_SEL 2     &bt BT_SEL 1     &bt BT_SEL 0    &none  &none    &trans  &trans  &trans  &trans  &trans       &trans
+                &trans  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &bt BT_CLR      &none  &none    &trans  &trans  &trans  &trans  &trans       &trans
+                &trans  &bootloader      &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &sys_reset                      &trans  &trans  &trans  &trans  &bootloader  &trans
+                                                          &kp LSHFT        &trans           &kp SPACE                       &trans  &trans  &trans
             >;
         };
 
+        // Layer 6
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &trans  &trans                    &kp UP_ARROW    &trans                     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LEFT                  &kp DOWN_ARROW  &kp RIGHT                  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp LG(LS(LEFT_BRACKET))  &trans          &kp LS(LG(RIGHT_BRACKET))  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                                          &trans          &trans                     &trans                  &trans  &trans  &trans
+                &trans  &trans  &trans                    &kp UP_ARROW    &trans                     &trans    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &kp LEFT                  &kp DOWN_ARROW  &kp RIGHT                  &trans    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &kp LG(LS(LEFT_BRACKET))  &trans          &kp LS(LG(RIGHT_BRACKET))  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+                                                          &trans          &trans                     &trans                      &trans  &trans  &trans
             >;
         };
 
+        // Layer 7
         system_layer {
             display-name = "SYSTEM";
             bindings = <
-&trans  &trans  &trans  &kp C_BRIGHTNESS_INC  &kp C_VOLUME_UP    &kp C_NEXT        &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN  &kp C_PLAY_PAUSE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans                &kp C_MUTE         &kp C_PREVIOUS                    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans                &trans             &trans                            &trans  &trans  &trans
+                &trans  &trans  &trans  &kp C_BRIGHTNESS_INC  &kp C_VOLUME_UP    &kp C_NEXT          &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN  &kp C_PLAY_PAUSE    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans                &kp C_MUTE         &kp C_PREVIOUS                        &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans                &trans             &trans                                &trans  &trans  &trans
             >;
         };
 
-        mouse_fast_layer {
-            display-name = "MOUSE FAST";
+        // Layer 8
+        mouse_aim_layer {
+            display-name = "MOUSE AIM";
             bindings = <
-&trans  &trans  &trans             &trans  &trans              &trans  &trans  &trans  &trans  &trans              &mmv MOVE_Y(-1200)  &trans             &trans  &trans
-&trans  &trans  &trans  &trans              &trans  &trans  &trans  &trans  &trans  &mmv MOVE_X(-1200)  &mmv MOVE_Y(1200)   &mmv MOVE_X(1200)  &trans  &trans
-&trans  &trans  &trans             &trans   &trans              &trans                  &trans  &trans              &trans              &trans             &trans  &trans
-                                   &trans              &trans              &trans                  &trans  &trans              &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &mmv MOVE(-424, -424)  &mmv MOVE(0, -600)  &mmv MOVE(424, -424)  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &mmv MOVE(-600, 0)     &trans              &mmv MOVE(600, 0)     &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &mmv MOVE(-424, 424)   &mmv MOVE(0, 600)   &mmv MOVE(424, 424)   &trans  &trans
+                                        &trans  &trans  &trans                      &trans  &trans                 &trans
             >;
         };
 
+        // Layer 9
         extra_layer_6 {
             display-name = "EXTRA 6";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans  &trans  &trans                      &trans  &trans  &trans
             >;
         };
     };
