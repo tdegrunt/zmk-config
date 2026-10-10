@@ -236,7 +236,7 @@
 
         // Layer 8
         mouse_aim_layer {
-            display-name = "MOUSE AIM";
+            display-name = "AIM";
             bindings = <
                 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &mmv MOVE(-424, -424)  &mmv MOVE(0, -600)  &mmv MOVE(424, -424)  &trans  &trans
                 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans    &trans  &mmv MOVE(-600, 0)     &trans              &mmv MOVE(600, 0)     &trans  &trans
