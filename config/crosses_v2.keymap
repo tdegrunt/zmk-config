@@ -287,9 +287,9 @@
 
 // Both listeners run on the right half (central), where layers live.
 &trackball_peripheral_listener {
-    input-processors = <&zip_temp_layer AUTO_MOUSE_LAYER 2000>;
+    input-processors = <&zip_temp_layer AUTO_MOUSE_LAYER 1000>;
 };
 
 &trackball_central_listener {
-    input-processors = <&zip_central_ball &zip_temp_layer AUTO_MOUSE_LAYER 2000>;
+    input-processors = <&zip_central_ball &zip_temp_layer AUTO_MOUSE_LAYER 1000>;
 };
