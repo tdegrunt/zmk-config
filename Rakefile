@@ -126,15 +126,18 @@ def build_one(build)
   # Passing CMake arguments makes west re-run CMake every time, so only pass
   # them when they changed. Edits to the keymap or .conf still reconfigure,
   # since CMake tracks those files itself.
+  # The snippets are part of the configuration too, so a changed one reconfigures.
   stamp = File.join(build_dir, ".rake-cmake-args")
+  configuration = (west_args + cmake_args).join("\n")
   configured = File.file?(File.join(build_dir, "CMakeCache.txt")) &&
-               File.file?(stamp) && File.read(stamp) == cmake_args.join("\n")
+               File.file?(stamp) && File.read(stamp) == configuration
   Dir.chdir(WORKSPACE) do
     if configured
       sh "west", "build", "-d", build_dir
     else
-      sh "west", "build", "-s", "zmk/app", "-d", build_dir, "-b", build.board, *west_args, "--", *cmake_args
-      File.write(stamp, cmake_args.join("\n"))
+      # Pristine: Zephyr ignores a changed snippet in an existing build directory.
+      sh "west", "build", "-p", "always", "-s", "zmk/app", "-d", build_dir, "-b", build.board, *west_args, "--", *cmake_args
+      File.write(stamp, configuration)
     end
   end
 

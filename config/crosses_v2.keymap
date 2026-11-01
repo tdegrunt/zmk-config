@@ -10,6 +10,12 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    layer_signal {
+        compatible = "zmk,layer-signal";
+        heartbeat-ms = <2000>;
+        positions;
+    };
+
     chosen { zmk,physical-layout = &gggw_crosses_36_layout; };
 };
 
@@ -254,5 +260,36 @@
                                 &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
+
+        // Layer 10: turned on by either trackball (see AUTO_MOUSE_LAYER below)
+        auto_mouse_layer {
+            display-name = "AUTO MOUSE";
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans    &trans     &mkp MCLK  &trans     &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &trans     &mkp RCLK  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
+                                &trans  &trans  &trans    &trans     &trans     &trans
+            >;
+        };
     };
+};
+
+// Auto mouse layer: moving either trackball turns on layer 10 until it has
+// been still for 2 seconds. Pressing any key other than the clicks (Y, P, A)
+// turns it off right away. Movement within 250 ms of a keystroke is ignored,
+// so bumping a ball while typing doesn't turn P, Y and A into clicks.
+#define AUTO_MOUSE_LAYER 10
+
+&zip_temp_layer {
+    require-prior-idle-ms = <250>;
+    excluded-positions = <6 15 17>;
+};
+
+// Both listeners run on the right half (central), where layers live.
+&trackball_peripheral_listener {
+    input-processors = <&zip_temp_layer AUTO_MOUSE_LAYER 2000>;
+};
+
+&trackball_central_listener {
+    input-processors = <&zip_central_ball &zip_temp_layer AUTO_MOUSE_LAYER 2000>;
 };

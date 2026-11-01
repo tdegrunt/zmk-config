@@ -80,9 +80,11 @@ include:
 
   - board: crosses_v2_left
     artifact-name: crosses_v2_36_left
+    snippet: layer-hud-usb-uart
   - board: crosses_v2_right
     artifact-name: crosses_v2_36_right
- 
+    snippet: layer-hud-usb-uart
+
   - board: crosses_v2_right
     artifact-name: crosses_v2_settings_reset
     shield: settings_reset

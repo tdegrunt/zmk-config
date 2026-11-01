@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: Good-Great-Grand-Wonderful
       url-base: https://github.com/Good-Great-Grand-Wonderful
+    - name: rafaelromao
+      url-base: https://github.com/rafaelromao
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -14,6 +16,9 @@ manifest:
     - name: crosses-v2-zmk-firmware
       remote: Good-Great-Grand-Wonderful
       import: config/west.yml
+      revision: main
+    - name: zmk-layer-hud
+      remote: rafaelromao
       revision: main
   self:
     path: config
