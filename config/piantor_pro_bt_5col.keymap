@@ -30,9 +30,9 @@
             // |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |
             //       | ESC/MEDIA | SPACE/NAV | TAB/FUN | RET/SYM | BSPC/NUM | DEL/ADJ |
             bindings = <
-                &kp Q       &kp W       &kp E        &kp R        &kp T &kp Y &kp U        &kp I        &kp O       &kp P
-                &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F  &kp G &kp H &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt RGUI SQT
-                &kp Z       &kp X       &kp C        &kp V        &kp B &kp N &kp M        &kp COMMA    &kp DOT     &kp FSLH
+                &kp Q       &mt LC(LS(LA(LGUI))) W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
+                &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LC(LS(LA(LGUI))) F &kp G &kp H &mt RSHFT J &mt RCTRL K &mt RALT L &mt RGUI SQT
+                &kp Z       &kp X       &kp C        &kp V        &kp B &kp N &mt LC(LS(LALT)) M &mt LC(LS(LALT)) COMMA &kp DOT &kp FSLH
                                               &lt 2 ESC &lt 1 SPACE &lt 5 TAB &lt 4 RET &lt 3 BSPC &lt 6 DEL
             >;
         };

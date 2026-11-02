@@ -155,10 +155,10 @@
         main_layer {
             display-name = "MAIN";
             bindings = <
-                &kp B         &kp L        &kp D         &kp C                    &kp V        &kp J        &kp Y                &kp O         &kp U        &kp SEMICOLON
-                &hml LCTRL N  &hml LALT R  &hml LGUI T   &hml LSHFT S             &kp G        &kp P        &hmr RSHFT H         &hmr RGUI A   &hmr RALT E  &hmr RCTRL I
-                &kp X         &kp Q        &kp M         &hml LC(LS(LA(LGUI))) W  &kp Z        &kp K        &hmr LC(LS(LALT)) F  &kp COMMA     &kp PERIOD   &kp SLASH
-                                           &lt 2 ESCAPE  &lt 3 SPACE              &lt 4 TAB    &lt 7 ENTER  &lt 6 BACKSPACE      &lt 5 ESCAPE
+                &kp B         &kp L        &kp D                &kp C                    &kp V                       &kp J        &kp Y                    &kp O                    &kp U        &kp SEMICOLON
+                &hml LCTRL N  &hml LALT R  &hml LGUI T          &hml LSHFT S             &kp G                       &kp P        &hmr RSHFT H             &hmr RGUI A              &hmr RALT E  &hmr RCTRL I
+                &kp X         &kp Q        &hml LC(LS(LALT)) M  &hml LC(LS(LA(LGUI))) W  &kp Z                       &kp K        &hmr LC(LS(LA(LGUI))) F  &hmr LC(LS(LALT)) COMMA  &kp PERIOD   &kp SLASH
+                                                                &lt 2 ESCAPE             &lt 3 SPACE  &lt 4 TAB      &lt 7 ENTER  &lt 6 BACKSPACE          &lt 5 ESCAPE
             >;
         };
 
