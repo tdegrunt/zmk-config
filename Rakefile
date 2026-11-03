@@ -8,8 +8,11 @@
 #   rake flash        flash a keyboard's halves with its firmware from build/
 #   rake flash:reset  flash a keyboard's halves with settings_reset firmware
 #
-# setup, update and build run inside the devcontainer. flash runs on the host,
-# where the bootloader volumes mount; it sticks to Ruby 2.6 (macOS system Ruby).
+# setup, update, build and clean run inside the devcontainer. Run on the host,
+# they run themselves there: in this checkout's devcontainer when it is running,
+# otherwise in a throwaway container from .devcontainer/Dockerfile with the same
+# mounts. flash runs on the host, where the bootloader volumes mount. The host
+# side sticks to Ruby 2.6 (macOS system Ruby).
 #
 # Environment:
 #   ZMK_WORKSPACE   west workspace (default: /opt/zmk-workspace)
@@ -90,8 +93,51 @@ def zephyr_exported?
   File.directory?(File.join(Dir.home, ".cmake", "packages", "Zephyr"))
 end
 
+# --- running in the devcontainer ---------------------------------------------
+
+def in_container?
+  File.exist?("/.dockerenv") || File.exist?("/run/.containerenv") || !ENV["REMOTE_CONTAINERS"].to_s.empty?
+end
+
+# The devcontainer mounts the repository here and the west workspace on a
+# volume named after the folder; the throwaway container uses the same paths,
+# so both share one build cache without reconfiguring.
+CONTAINER_REPO_DIR = "/workspaces/#{File.basename(REPO_DIR)}"
+WORKSPACE_VOLUME = "#{File.basename(REPO_DIR)}-zmk-workspace"
+CONTAINER_IMAGE = "#{File.basename(REPO_DIR)}-devcontainer"
+
+def running_devcontainer
+  ids = `docker ps -q --filter label=devcontainer.local_folder=#{Shellwords.escape(REPO_DIR)}`
+  abort "Can't run docker; is Docker running?" unless $?.success?
+  ids.split.first
+end
+
+# Runs `rake <task>` in the devcontainer. Returns false inside the container,
+# so the task itself goes on to do the work there.
+def delegate_to_container(task, args = [])
+  return false if in_container?
+
+  target = args.empty? ? task : "#{task}[#{args.join(',')}]"
+  tty = $stdout.tty? ? ["-t"] : []
+  container = running_devcontainer
+  if container
+    puts "==> Running `rake #{target}` in devcontainer #{container}"
+    sh "docker", "exec", *tty, "-w", CONTAINER_REPO_DIR, container, "rake", target
+  else
+    puts "==> No devcontainer running; running `rake #{target}` in a throwaway container"
+    sh "docker", "build", "-q", "-t", CONTAINER_IMAGE, File.join(REPO_DIR, ".devcontainer")
+    sh "docker", "run", "--rm", *tty,
+       "-v", "#{WORKSPACE_VOLUME}:/opt/zmk-workspace",
+       "-v", "#{REPO_DIR}:#{CONTAINER_REPO_DIR}",
+       "-w", CONTAINER_REPO_DIR,
+       CONTAINER_IMAGE, "rake", target
+  end
+  true
+end
+
 desc "Initialize the ZMK west workspace"
 task :setup do
+  next if delegate_to_container("setup")
   sync_config
   if workspace_initialized?
     puts "ZMK workspace already initialized at #{WORKSPACE}"
@@ -108,6 +154,7 @@ end
 
 desc "Update the west workspace to match config/west.yml"
 task :update do
+  next if delegate_to_container("update")
   next Rake::Task[:setup].invoke unless workspace_initialized?
   sync_config
   Dir.chdir(WORKSPACE) { sh "west", "update" }
@@ -159,11 +206,14 @@ end
 
 desc "Remove the cached build directories"
 task :clean do
+  next if delegate_to_container("clean")
   FileUtils.rm_rf(BUILD_CACHE)
 end
 
 desc "Build firmware for every build.yaml entry, or for one board (and shield)"
-task :build, [:board, :shield] => :prepare do |_, args|
+task :build, [:board, :shield] do |_, args|
+  next if delegate_to_container("build", args.to_a)
+  Rake::Task[:prepare].invoke
   FileUtils.mkdir_p(FIRMWARE_DIR)
   targets = if args[:board]
               [Build.new(args[:board], args[:shield].to_s, "", "", "")]
@@ -273,7 +323,7 @@ def choose_keyboard(candidates)
 end
 
 def flash(reset:)
-  if File.exist?("/.dockerenv") || File.exist?("/run/.containerenv") || ENV["REMOTE_CONTAINERS"]
+  if in_container?
     warn "Warning: this looks like a container; USB volumes usually only mount on the host."
   end
 
