@@ -285,6 +285,52 @@
     excluded-positions = <6 15 17>;
 };
 
+// Trackball speed: each ball moves at 1 / *_DIV of what the sensor reports,
+// on top of the CPI set in Keystage. The scalers keep remainders, so slow
+// movements aren't lost. The pipelines repeat the board's own processors
+// (crosses-v2-zmk-firmware crosses_v2.dts) with the scalers changed. The left
+// ball's pipelines run on the left half, so changing them needs both halves
+// flashed.
+#define BALL_SPEED_MULT 1
+#define BALL_LEFT_SPEED_DIV 2
+#define BALL_RIGHT_SPEED_DIV 2
+// Scroll modes divide by 8 on the board; a higher number scrolls slower.
+#define BALL_LEFT_SCROLL_DIV 32
+
+// The left ball's scroll directions are swapped from the board's: Scroll Up
+// gets the Y invert that Scroll Down has there.
+&zip_periph_ball {
+    cursor {
+        input-processors
+          = <&zip_xy_scaler BALL_SPEED_MULT BALL_LEFT_SPEED_DIV>
+          , <&zip_report_rate_limit 2>;
+    };
+
+    scroll_up {
+        input-processors
+          = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>
+          , <&zip_xy_to_scroll_mapper>
+          , <&zip_scroll_scaler 1 BALL_LEFT_SCROLL_DIV>
+          , <&zip_report_rate_limit 16>;
+    };
+
+    scroll_down {
+        input-processors
+          = <&zip_xy_to_scroll_mapper>
+          , <&zip_scroll_scaler 1 BALL_LEFT_SCROLL_DIV>
+          , <&zip_report_rate_limit 16>;
+    };
+};
+
+&zip_central_ball {
+    cursor {
+        input-processors
+          = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>
+          , <&zip_xy_scaler BALL_SPEED_MULT BALL_RIGHT_SPEED_DIV>
+          , <&zip_report_rate_limit 4>;
+    };
+};
+
 // Both listeners run on the right half (central), where layers live.
 &trackball_peripheral_listener {
     input-processors = <&zip_temp_layer AUTO_MOUSE_LAYER 1000>;
