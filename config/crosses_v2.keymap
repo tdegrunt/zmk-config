@@ -265,8 +265,8 @@
         auto_mouse_layer {
             display-name = "AUTO MOUSE";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans    &trans     &mkp MCLK  &trans     &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &trans     &mkp RCLK  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
                 &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
                                 &trans  &trans  &trans    &trans     &trans     &trans
             >;
@@ -275,14 +275,14 @@
 };
 
 // Auto mouse layer: moving either trackball turns on layer 10 until it has
-// been still for 2 seconds. Pressing any key other than the clicks (Y, P, A)
+// been still for 2 seconds. Pressing any key other than the clicks (J, Y, O)
 // turns it off right away. Movement within 250 ms of a keystroke is ignored,
-// so bumping a ball while typing doesn't turn P, Y and A into clicks.
+// so bumping a ball while typing doesn't turn J, Y and O into clicks.
 #define AUTO_MOUSE_LAYER 10
 
 &zip_temp_layer {
     require-prior-idle-ms = <250>;
-    excluded-positions = <6 15 17>;
+    excluded-positions = <5 6 7>;
 };
 
 // Trackball speed: each ball moves at 1 / *_DIV of what the sensor reports,
