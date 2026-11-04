@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: MIT
+
+description: |
+  Turns a layer on while a pointing device moves; ZMK's temp layer input
+  processor with its state kept per instance (see
+  src/input_processor_auto_layer.c).
+
+compatible: "zmk,input-processor-auto-layer"
+
+include: ip_two_param.yaml
+
+properties:
+  require-prior-idle-ms:
+    type: int
+    default: 0
+    description: Input within this many ms of a keystroke doesn't turn the layer on
+
+  excluded-positions:
+    type: array
+    default: []
+    description: Key positions that don't turn the layer off when pressed

@@ -4,3 +4,10 @@
 # exits 1 instead of warning).
 config ZMK_BOARD_COMPAT
 	default y if BOARD_CROSSES_V2_LEFT || BOARD_CROSSES_V2_RIGHT
+
+config ZMK_INPUT_PROCESSOR_AUTO_LAYER
+	bool "Auto layer input processor"
+	default y
+	depends on ZMK_POINTING && DT_HAS_ZMK_INPUT_PROCESSOR_AUTO_LAYER_ENABLED
+	# Layers live on the central; a split peripheral has no keymap.
+	depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
