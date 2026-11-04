@@ -58,6 +58,18 @@
 
             hold-trigger-on-release;
         };
+
+        // Home row mods for the left-ball mouse layer, where H, A and E are
+        // the clicks: a mod works with any key, including the same hand, so
+        // T+C still copies and S+H Shift-clicks.
+        hma: home_row_mod_any {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     combos {
@@ -261,28 +273,56 @@
             >;
         };
 
-        // Layer 10: turned on by either trackball (see AUTO_MOUSE_LAYER below)
-        auto_mouse_layer {
-            display-name = "AUTO MOUSE";
+        // Layer 10: turned on by the right trackball (see MOUSE_RIGHT_LAYER below)
+        mouse_right_layer {
+            display-name = "MOUSE R";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
-                                &trans  &trans  &trans    &trans     &trans     &trans
+                &trans  &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans    &trans  &trans  &trans  &trans  &trans
+                &trans  &trans     &trans     &trans     &trans    &trans  &trans  &trans  &trans  &trans
+                                   &trans     &trans     &trans    &trans  &trans  &trans
+            >;
+        };
+
+        // Layer 11: turned on by the left trackball (see MOUSE_LEFT_LAYER below)
+        mouse_left_layer {
+            display-name = "MOUSE L";
+            bindings = <
+                &trans  &trans        &trans        &trans        &trans    &trans  &trans     &trans     &trans     &trans
+                &trans  &hma LALT R   &hma LGUI T   &hma LSHFT S  &trans    &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans
+                &trans  &trans        &trans        &trans        &trans    &trans  &trans     &trans     &trans     &trans
+                                      &trans        &trans        &trans    &trans  &trans     &trans
             >;
         };
     };
 };
 
-// Auto mouse layer: moving either trackball turns on layer 10 until it has
-// been still for 2 seconds. Pressing any key other than the clicks (J, Y, O)
-// turns it off right away. Movement within 250 ms of a keystroke is ignored,
-// so bumping a ball while typing doesn't turn J, Y and O into clicks.
-#define AUTO_MOUSE_LAYER 10
+// Mouse layers: moving a trackball turns on its layer, with the clicks on the
+// other hand's home row, until that ball has been still for 1 second:
+//   right ball: layer 10, S, T, R are the left, middle and right click
+//   left ball:  layer 11, H, A, E are the left, middle and right click
+// Pressing any other key turns the layer off right away, except S, T and R
+// on layer 11, which stay mods there. Movement within 250 ms of a keystroke is
+// ignored, so bumping a ball while typing doesn't turn letters into clicks.
+// ZMK's zip_temp_layer can only drive one layer, hence zmk,input-processor-
+// auto-layer from this repository (src/input_processor_auto_layer.c).
+#define MOUSE_RIGHT_LAYER 10
+#define MOUSE_LEFT_LAYER 11
 
-&zip_temp_layer {
-    require-prior-idle-ms = <250>;
-    excluded-positions = <5 6 7>;
+/ {
+    zip_auto_layer_right: zip_auto_layer_right {
+        compatible = "zmk,input-processor-auto-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <250>;
+        excluded-positions = <11 12 13>;
+    };
+
+    zip_auto_layer_left: zip_auto_layer_left {
+        compatible = "zmk,input-processor-auto-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <250>;
+        excluded-positions = <16 17 18 11 12 13>;
+    };
 };
 
 // Trackball speed: each ball moves at 1 / *_DIV of what the sensor reports,
@@ -333,9 +373,9 @@
 
 // Both listeners run on the right half (central), where layers live.
 &trackball_peripheral_listener {
-    input-processors = <&zip_temp_layer AUTO_MOUSE_LAYER 1000>;
+    input-processors = <&zip_auto_layer_left MOUSE_LEFT_LAYER 1000>;
 };
 
 &trackball_central_listener {
-    input-processors = <&zip_central_ball &zip_temp_layer AUTO_MOUSE_LAYER 1000>;
+    input-processors = <&zip_central_ball &zip_auto_layer_right MOUSE_RIGHT_LAYER 1000>;
 };
