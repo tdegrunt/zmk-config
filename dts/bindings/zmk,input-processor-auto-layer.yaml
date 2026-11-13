@@ -18,4 +18,6 @@ properties:
   excluded-positions:
     type: array
     default: []
-    description: Key positions that don't turn the layer off when pressed
+    description: |
+      Key positions that don't turn the layer off when pressed, besides those
+      bound to something other than &trans on the layer

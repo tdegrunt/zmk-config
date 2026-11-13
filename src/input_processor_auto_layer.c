@@ -11,17 +11,20 @@
  *   param1: the layer to turn on
  *   param2: turn it off again after this many ms without input (0: never)
  *
- * The layer also turns off when a key outside excluded-positions is pressed.
+ * The layer also turns off when a key is pressed that is &trans on it and isn't
+ * in excluded-positions, so keys bound on the layer (its clicks) keep it on.
  * Input within require-prior-idle-ms of a keystroke doesn't turn it on.
  */
 
 #define DT_DRV_COMPAT zmk_input_processor_auto_layer
 
+#include <string.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/sys/atomic.h>
 #include <drivers/input_processor.h>
 #include <zephyr/logging/log.h>
+#include <zmk/behavior.h>
 #include <zmk/keymap.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/position_state_changed.h>
@@ -53,6 +56,13 @@ static bool position_is_excluded(const struct auto_layer_config *cfg, uint32_t p
         }
     }
     return false;
+}
+
+static bool position_is_bound(struct auto_layer_data *data, uint32_t position) {
+    const struct zmk_behavior_binding *binding = zmk_keymap_get_layer_binding_at_idx(
+        (zmk_keymap_layer_id_t)atomic_get(&data->layer), position);
+    return binding && binding->behavior_dev &&
+           strcmp(binding->behavior_dev, DEVICE_DT_NAME(DT_NODELABEL(trans))) != 0;
 }
 
 static void deactivate(struct auto_layer_data *data) {
@@ -106,7 +116,8 @@ static void handle_event_for(const struct device *dev, const zmk_event_t *eh) {
 
     const struct zmk_position_state_changed *pos = as_zmk_position_state_changed(eh);
     if (pos) {
-        if (pos->state && !position_is_excluded(cfg, pos->position)) {
+        if (pos->state && atomic_get(&data->active) &&
+            !position_is_excluded(cfg, pos->position) && !position_is_bound(data, pos->position)) {
             k_work_cancel_delayable(&data->deactivate_work);
             deactivate(data);
         }

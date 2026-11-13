@@ -265,10 +265,10 @@
         mouse_right_layer {
             display-name = "MOUSE R";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans              &trans     &trans     &trans     &trans  &trans
-                &trans  &trans  &trans  &trans  &trans              &trans     &trans     &trans     &trans  &trans
-                &trans  &trans  &trans  &trans  &trans              &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
-                                        &trans  &trans  &trans      &trans     &trans     &trans
+                &trans  &trans  &trans  &trans  &trans              &trans  &trans     &trans     &trans     &trans
+                &trans  &trans  &trans  &trans  &trans              &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans
+                &trans  &trans  &trans  &trans  &trans              &trans  &trans     &trans     &trans     &trans
+                                        &trans  &trans  &trans      &trans  &trans     &trans
             >;
         };
 
@@ -276,24 +276,24 @@
         mouse_left_layer {
             display-name = "MOUSE L";
             bindings = <
-                &trans  &trans  &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK              &trans  &trans  &trans  &trans  &trans
-                                           &trans     &trans     &trans      &trans  &trans  &trans
+                &trans  &trans     &trans     &trans     &trans              &trans  &trans  &trans  &trans  &trans
+                &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans              &trans  &trans  &trans  &trans  &trans
+                &trans  &trans     &trans     &trans     &trans              &trans  &trans  &trans  &trans  &trans
+                                              &trans     &trans  &trans      &trans  &trans  &trans
             >;
         };
     };
 };
 
 // Mouse layers: moving a trackball turns on its layer, with the clicks on the
-// bottom row of the same hand, until that ball has been still for 1 second:
-//   right ball: layer 10, K, F, comma are the left, middle and right click
-//   left ball:  layer 11, Z, W, M are the left, middle and right click
-// The home row mods (N, R, T, S and H, A, E, I) work as usual and keep the
-// layer on, so a mod on the other hand modifies a click (S+K is Shift-click).
-// Pressing any other key turns the layer off right away. Movement within
-// 250 ms of a keystroke is ignored, so bumping a ball while typing doesn't
-// turn letters into clicks.
+// home row of the same hand, until that ball has been still for 1 second:
+//   right ball: layer 10, H, A, E are the left, middle and right click
+//   left ball:  layer 11, S, T, R are the left, middle and right click
+// Keys bound on a mouse layer keep it on, and so do the home row mods
+// (excluded-positions), so a mod on the other hand modifies a click (S+H is
+// Shift-click). Pressing any other key turns the layer off right away. To move
+// a click, change only the mouse layer. Movement within 250 ms of a keystroke
+// is ignored, so bumping a ball while typing doesn't turn letters into clicks.
 // ZMK's zip_temp_layer can only drive one layer, hence zmk,input-processor-
 // auto-layer from this repository (src/input_processor_auto_layer.c).
 #define MOUSE_RIGHT_LAYER 10
@@ -304,14 +304,14 @@
         compatible = "zmk,input-processor-auto-layer";
         #input-processor-cells = <2>;
         require-prior-idle-ms = <250>;
-        excluded-positions = <10 11 12 13  16 17 18 19  25 26 27>;
+        excluded-positions = <10 11 12 13  16 17 18 19>;
     };
 
     zip_auto_layer_left: zip_auto_layer_left {
         compatible = "zmk,input-processor-auto-layer";
         #input-processor-cells = <2>;
         require-prior-idle-ms = <250>;
-        excluded-positions = <10 11 12 13  16 17 18 19  22 23 24>;
+        excluded-positions = <10 11 12 13  16 17 18 19>;
     };
 };
 
