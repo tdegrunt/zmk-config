@@ -188,10 +188,10 @@
         number_layer {
             display-name = "NUMBER";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans    &kp PERCENT  &kp N7  &kp N8      &kp N9  &trans
-                &trans  &trans  &trans  &trans  &trans    &kp SLASH    &kp N4  &kp N5      &kp N6  &kp PLUS
-                &trans  &trans  &trans  &trans  &trans    &kp ASTRK    &kp N1  &kp N2      &kp N3  &kp MINUS
-                                &trans  &trans  &trans    &kp EQUAL    &kp N0  &kp PERIOD
+                &trans  &trans  &trans  &trans  &trans              &kp PERCENT  &kp N7      &kp N8  &kp N9  &trans
+                &trans  &trans  &trans  &trans  &trans              &kp SLASH    &kp N4      &kp N5  &kp N6  &kp PLUS
+                &trans  &trans  &trans  &trans  &trans              &kp ASTRK    &kp N1      &kp N2  &kp N3  &kp MINUS
+                                        &trans  &trans  &trans      &kp EQUAL    &kp PERIOD  &kp N0
             >;
         };
 
@@ -265,10 +265,10 @@
         mouse_right_layer {
             display-name = "MOUSE R";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans    &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
-                                &trans  &trans  &trans    &trans     &trans     &trans
+                &trans  &trans  &trans  &trans  &trans              &trans     &trans     &trans     &trans  &trans
+                &trans  &trans  &trans  &trans  &trans              &trans     &trans     &trans     &trans  &trans
+                &trans  &trans  &trans  &trans  &trans              &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
+                                        &trans  &trans  &trans      &trans     &trans     &trans
             >;
         };
 
@@ -276,22 +276,21 @@
         mouse_left_layer {
             display-name = "MOUSE L";
             bindings = <
-                &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK    &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
-                                &trans     &trans     &trans       &trans  &trans  &trans
+                &trans  &trans  &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &trans     &trans     &trans                 &trans  &trans  &trans  &trans  &trans
+                &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK              &trans  &trans  &trans  &trans  &trans
+                                           &trans     &trans     &trans      &trans  &trans  &trans
             >;
         };
     };
 };
 
 // Mouse layers: moving a trackball turns on its layer, with the clicks on the
-// top row of the same hand (like the buttons of an MX Ergo), until that ball
-// has been still for 1 second:
-//   right ball: layer 10, J, Y, O are the left, middle and right click
-//   left ball:  layer 11, V, C, D are the left, middle and right click
+// bottom row of the same hand, until that ball has been still for 1 second:
+//   right ball: layer 10, K, F, comma are the left, middle and right click
+//   left ball:  layer 11, Z, W, M are the left, middle and right click
 // The home row mods (N, R, T, S and H, A, E, I) work as usual and keep the
-// layer on, so a mod on the other hand modifies a click (S+J is Shift-click).
+// layer on, so a mod on the other hand modifies a click (S+K is Shift-click).
 // Pressing any other key turns the layer off right away. Movement within
 // 250 ms of a keystroke is ignored, so bumping a ball while typing doesn't
 // turn letters into clicks.
@@ -305,14 +304,14 @@
         compatible = "zmk,input-processor-auto-layer";
         #input-processor-cells = <2>;
         require-prior-idle-ms = <250>;
-        excluded-positions = <5 6 7  10 11 12 13  16 17 18 19>;
+        excluded-positions = <10 11 12 13  16 17 18 19  25 26 27>;
     };
 
     zip_auto_layer_left: zip_auto_layer_left {
         compatible = "zmk,input-processor-auto-layer";
         #input-processor-cells = <2>;
         require-prior-idle-ms = <250>;
-        excluded-positions = <2 3 4  10 11 12 13  16 17 18 19>;
+        excluded-positions = <10 11 12 13  16 17 18 19  22 23 24>;
     };
 };
 
